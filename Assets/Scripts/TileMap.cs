@@ -21,7 +21,7 @@ public class TileMap : MonoBehaviour
         {
             Vector2 mousePos = WorldPosToTilePos(GetMouseWorldPosition());
             Debug.Log("Pressed left-click at " + mousePos.x + ", " + mousePos.y);
-            if ((GetMouseWorldPosition().z < 5) && (0 <= mousePos.x && mousePos.x < tiles.GetLength(0)) && (0 <= mousePos.y && mousePos.y < tiles.GetLength(1))) {
+            if ((GetMouseWorldPosition().z > -2) && (0 <= mousePos.x && mousePos.x < tiles.GetLength(0)) && (0 <= mousePos.y && mousePos.y < tiles.GetLength(1))) {
                 Debug.Log("Inside");
                 int x = (int)mousePos.x;
                 int y = (int)mousePos.y;

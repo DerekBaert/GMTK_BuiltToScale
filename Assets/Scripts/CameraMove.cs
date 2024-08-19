@@ -6,11 +6,12 @@ public class CameraMove : MonoBehaviour
 {
 
     public float MoveSpeed = 200f;
+    private float minZ;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        minZ = transform.position.z;
     }
 
     // Update is called once per frame
@@ -31,11 +32,15 @@ public class CameraMove : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.PageUp)) {
-            velocity.z = MoveSpeed * Time.deltaTime * 0.75f;
+            velocity.z = MoveSpeed * Time.deltaTime;
         } else if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.PageDown)) {
-            velocity.z = MoveSpeed * Time.deltaTime * -0.75f;
+            velocity.z = MoveSpeed * Time.deltaTime * -1;
         }
 
         transform.position = transform.position + velocity;
+
+        if (transform.position.z > minZ) { 
+            transform.position = new Vector3(transform.position.x, transform.position.y, minZ); 
+        }
     }
 }
